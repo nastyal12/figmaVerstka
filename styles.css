@@ -5,9 +5,6 @@ body {
     background: #f9f9f9;
 }
 
-
-/* Header */
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -17,13 +14,12 @@ body {
 }
 
 .header__logo {
-    font-size: 24px;
+    font-size: 10px;
     font-weight: bold;
 }
 
 .header__menu {
     overflow-x: auto;
-    /* горизонтальный скролл на мобилке */
 }
 
 .header__icon {
@@ -131,21 +127,35 @@ p {
     margin-top: 20px;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+.header__icon {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+}
+
 @media (max-width: 320px) {
-    /* Прячем все иконки кроме call и profile */
-    .header__icon:not(.header__icon--call):not(.header__icon--profile) {
+    .header__icon:not(.header__icon--menu):not(.header__icon--group) {
         display: none;
     }
     /* Уменьшаем оставшиеся иконки */
-    .header__icon--call,
-    .header__icon--profile {
-        width: 10px;
-        height: 10px;
-        margin-left: 5px;
+    .header__icon--menu,
+    .header__icon--group {
+        width: 28px;
+        height: 28px;
     }
     /* Логотип тоже можно уменьшить */
     .header__logo img {
-        width: 70px;
+        width: 30px;
     }
     /* Центрируем оставшиеся элементы */
     .header {
@@ -161,6 +171,7 @@ p {
     .services__content {
         flex-direction: row;
         align-items: flex-start;
+        gap: 24px;
     }
     .services__text {
         flex: 1;
@@ -168,6 +179,9 @@ p {
     .services__image {
         flex: 1;
     }
+    /* .imgLogo {
+        margin-left: 30%;
+    }*/
 }
 
 
@@ -179,5 +193,17 @@ p {
     }
     .services__title {
         font-size: 28px;
+    }
+    .services__text {
+        flex: 1;
+    }
+    .services__content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16x;
+    }
+    .services__image {
+        width: 200px;
+        flex: 1;
     }
 }
