@@ -1,3 +1,9 @@
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,24 +14,34 @@ body {
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
     padding: 12px 16px;
+    box-sizing: border-box;
     background: #fff;
     border-bottom: 1px solid #ddd;
+    white-space: nowrap;
 }
 
-.header__logo {
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.header__menu {
-    overflow-x: auto;
+.header__icons {
+    display: flex;
+    gap: 12px;
+    margin-right: auto;
 }
 
 .header__icon {
+    flex: 0 0 auto;
     width: 40px;
     height: 40px;
-    margin-left: 10px;
+}
+
+.header__icon img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
 .menu {
@@ -43,26 +59,6 @@ body {
     white-space: nowrap;
 }
 
-
-/* Services */
-
-.services {
-    padding: 16px;
-}
-
-.services__title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 16px;
-}
-
-.services__tabs {
-    display: flex;
-    gap: 12px;
-    overflow-x: auto;
-    margin-bottom: 16px;
-}
-
 .menu__item {
     color: #908f8f;
     padding: 8px 12px;
@@ -71,7 +67,6 @@ body {
     border: 1px solid transparent;
     white-space: nowrap;
     transition: all 0.3s ease;
-    /* плавный переход */
 }
 
 .menu__item:hover {
@@ -83,19 +78,28 @@ body {
     background: #f8fafa;
     border-color: #00c896;
     color: #fff;
-    /* активная вкладка выделяется чуть сильнее */
+}
+
+.services {
+    padding: 16px;
+}
+
+.services__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 16px;
 }
 
 .services__content {
     display: flex;
     flex-direction: column;
-    /* mobile first */
     gap: 16px;
 }
 
 .services__text {
     font-size: 14px;
     line-height: 1.5;
+    flex: 1;
 }
 
 .services__text p {
@@ -110,62 +114,42 @@ body {
     font-weight: bold;
 }
 
+.services__image {
+    flex: 1;
+}
+
 .services__image img {
     width: 100%;
     border-radius: 8px;
 }
 
-p {
-    justify-content: center;
-}
 
-.imgLogo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px;
-}
+/* mobile */
 
-.header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 16px;
-    background: #fff;
-    border-bottom: 1px solid #ddd;
-    overflow-x: auto;
-}
-
-.header__icon {
-    flex: 0 0 auto;
-    width: 40px;
-    height: 40px;
-}
-
-@media (max-width: 320px) {
-    .header__icon:not(.header__icon--menu):not(.header__icon--group) {
+@media (min-width: 320px) {
+    .header__icon--call,
+    .header__icon--profile {
         display: none;
     }
-    /* Уменьшаем оставшиеся иконки */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+    .header__icon {
+        width: 32px;
+        height: 32px;
+    }
     .header__icon--menu,
     .header__icon--group {
-        width: 28px;
-        height: 28px;
-    }
-    /* Логотип тоже можно уменьшить */
-    .header__logo img {
-        width: 30px;
-    }
-    /* Центрируем оставшиеся элементы */
-    .header {
-        justify-content: center;
-        gap: 10px;
+        margin-right: 0;
     }
 }
 
 
-/* --- Tablet --- */
+/* Tabls */
 
 @media (min-width: 768px) {
     .services__content {
@@ -173,37 +157,40 @@ p {
         align-items: flex-start;
         gap: 24px;
     }
-    .services__text {
-        flex: 1;
+    .header__icon--group {
+        margin-top: 10px;
     }
-    .services__image {
-        flex: 1;
+    .header {
+        justify-content: flex-end;
+        gap: 100px;
     }
-    /* .imgLogo {
-        margin-left: 30%;
-    }*/
+    .header__icon {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 
-/* --- Desktop --- */
+/* Comps  */
 
 @media (min-width: 1120px) {
+    .header__icon--call,
+    .header__icon--profile,
+    .header__icon--menu,
+    .header__icon--group {
+        display: none;
+    }
+    .header {
+        justify-content: flex-end;
+        gap: 40px;
+    }
     .services {
         padding: 40px 80px;
     }
     .services__title {
         font-size: 28px;
     }
-    .services__text {
-        flex: 1;
-    }
-    .services__content {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 16x;
-    }
     .services__image {
         width: 200px;
-        flex: 1;
     }
 }
